@@ -7,7 +7,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
-type kubeutilser interface {
+type KubeUtilser interface {
 	Create(string) error
 	Delete(string, string, *int64) error
 	DeleteList(string, []string, *int64) error
