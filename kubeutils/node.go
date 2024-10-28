@@ -54,7 +54,7 @@ func (c *Node) DeleteList(namespace string, nameList []string, gracePeriodSecond
 	return nil
 }
 
-func (c *Node) GET(namespace string, name string) (item interface{}, err error) {
+func (c *Node) Get(namespace string, name string) (item interface{}, err error) {
 	logs.Info(map[string]interface{}{"命名空间": name}, "获取Node")
 	i, err := c.InstanceInterface.Nodes().Get(context.TODO(), name, v1.GetOptions{})
 	i.APIVersion = "v1"
