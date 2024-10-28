@@ -1,4 +1,6 @@
-module kubeutils
+module github.com/qinlanggen001/kubeutils
+
+//module kubeutils
 
 go 1.20
 

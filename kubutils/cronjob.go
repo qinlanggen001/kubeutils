@@ -2,7 +2,8 @@ package kubeutils
 
 import (
 	"context"
-	"kubeutils/utils/logs"
+
+	"github.com/qinlanggen001/kubeutils/utils/logs"
 
 	batchv1 "k8s.io/api/batch/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
