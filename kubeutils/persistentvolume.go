@@ -59,14 +59,14 @@ func (c *PersistentVolume) DeleteList(namespace string, nameList []string, grace
 }
 
 // 更新资源
-func (c *PersistentVolume) Update() error {
+func (c *PersistentVolume) Update(namespace string) error {
 	logs.Warning(map[string]interface{}{"名称": c.Item.Name}, "更新PersistentVolume")
 	_, err := c.InstanceInterface.PersistentVolumes().Update(context.TODO(), c.Item, v1.UpdateOptions{})
 	return err
 }
 
 // 获取资源列表
-func (c *PersistentVolume) List(labelSelector, fieldSelector string) (items interface{}, err error) {
+func (c *PersistentVolume) List(namespace string, labelSelector, fieldSelector string) (items interface{}, err error) {
 	logs.Info(map[string]interface{}{}, "查询PersistentVolume列表")
 	// 有可能是根据查询条件进行查询
 	listOptions := v1.ListOptions{
@@ -79,7 +79,7 @@ func (c *PersistentVolume) List(labelSelector, fieldSelector string) (items inte
 }
 
 // 获取资源配置
-func (c *PersistentVolume) Get(name string) (item interface{}, err error) {
+func (c *PersistentVolume) Get(namespace string, name string) (item interface{}, err error) {
 	logs.Info(map[string]interface{}{"名称": name}, "查询PersistentVolume详情")
 	i, err := c.InstanceInterface.PersistentVolumes().Get(context.TODO(), name, v1.GetOptions{})
 	i.APIVersion = "v1"

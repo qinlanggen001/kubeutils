@@ -48,7 +48,7 @@ func (c *PersistentVolumeClaim) Delete(namespace string, name string, gracePerio
 	return err
 }
 
-func (c *PersistentVolumeClaim) DeleteCollection(namespace string, nameList []string, gracePeriodSeconds *int64) error {
+func (c *PersistentVolumeClaim) DeleteList(namespace string, nameList []string, gracePeriodSeconds *int64) error {
 	for _, name := range nameList {
 		logs.Info(map[string]interface{}{"名称": name, "命名空间": namespace}, "pi删除PersistentVolumeClaim")
 		c.Delete(namespace, name, gracePeriodSeconds)
